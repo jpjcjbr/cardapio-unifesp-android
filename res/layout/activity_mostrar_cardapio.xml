@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"  
+    	android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+	<LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context=".MostrarCardapioActivity" >
+	    
+	    <TextView
+	        android:id="@+id/titulo"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="27dp"
+	        android:gravity="center"
+	        
+	        android:text="@string/titulo"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <TextView
+	        android:id="@+id/hoje"
+	        android:layout_width="279dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="data de hoje"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="30dp">
+		    <TextView 
+		        android:id="@+id/lblQuentes"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/quentes" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/quentes"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+	    </LinearLayout>
+	
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15dp">
+		    <TextView
+		        android:id="@+id/lblGuarnicao"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/guarnicao" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/guarnicao"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+		</LinearLayout>
+	
+		<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15dp">
+		    <TextView
+		        android:id="@+id/lblSaladas"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/saladas" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/saladas"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+		</LinearLayout>
+	
+		<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15dp">	    
+		    <TextView
+		        android:id="@+id/lblPratoPrincipal"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/prato_principal" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/pratoPrincipal"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+		</LinearLayout>
+	
+		<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15dp">	    
+		    <TextView
+		        android:id="@+id/lblSucos"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/sucos" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/sucos"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+		</LinearLayout>
+	
+		<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15dp">	    
+		    <TextView
+		        android:id="@+id/lblSobremesa"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/sobremesa" 
+		        android:textStyle="bold"/>
+		    
+		    <TextView
+		        android:id="@+id/sobremesa"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text=" aaaa" />
+		</LinearLayout>
+		
+	</LinearLayout>
+
+</ScrollView>

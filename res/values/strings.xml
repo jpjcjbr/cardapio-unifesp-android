@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CardapioNaMao</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo">Cardápio de Hoje!</string>
+    <string name="almoco">Almoço</string>
+    <string name="jantar">Jantar</string>
+    <string name="title_activity_mostrar_cardapio">MostrarCardapioActivity</string>
+    <string name="quentes">Quentes: </string>
+    <string name="guarnicao">Guarnição: </string>
+    <string name="saladas">Saladas: </string>
+    <string name="prato_principal">Prato principal: </string>
+    <string name="sucos">Sucos: </string>
+    <string name="sobremesa">Sobremesa: </string>
+
+</resources>
