@@ -45,6 +45,8 @@ public class AtualizacaoCardapioTask extends AsyncTask<Void, Void, Cardapio>{
 	@Override
 	protected Cardapio doInBackground(Void... arg0) {
 		
+		deuErro = false;
+		
 		HttpClient httpClient = new DefaultHttpClient();
 		try {
 			HttpResponse response = httpClient.execute(new HttpGet(requestURL));
