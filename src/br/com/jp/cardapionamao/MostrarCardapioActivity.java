@@ -1,31 +1,22 @@
 package br.com.jp.cardapionamao;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import br.com.jp.cardapionamao.model.Cardapio;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
+import br.com.jp.cardapionamao.model.Cardapio;
 
 public class MostrarCardapioActivity extends Activity {
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd/MM/yyyy");
 	private SimpleDateFormat sdfJSON = new SimpleDateFormat("dd-MM-yyyy");
+	private String tipo;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +26,13 @@ public class MostrarCardapioActivity extends Activity {
         TextView hoje = (TextView) findViewById(R.id.hoje);
         hoje.setText(sdf.format(new Date()));
         
-        Cardapio cardapio = buscarDados(getIntent().getStringExtra("refeicao"));
-        
-        TextView quentes = (TextView) findViewById(R.id.quentes);
+        tipo = getIntent().getStringExtra("refeicao");
+		atualizarDados(tipo);
+    }
+    
+    public void atualizarCampos(Cardapio cardapio)
+    {
+    	TextView quentes = (TextView) findViewById(R.id.quentes);
         concatenarTexto(quentes, cardapio.get("Quentes"));
         
         TextView guarnicao = (TextView) findViewById(R.id.guarnicao);
@@ -56,24 +51,32 @@ public class MostrarCardapioActivity extends Activity {
         concatenarTexto(sobremesa, cardapio.get("Sobremesa"));
     }
     
-	private Cardapio buscarDados(String tipo) {
-        
-        try {
-        	HttpClient httpClient = new DefaultHttpClient();
-			HttpResponse response = httpClient.execute(new HttpGet("http://cardapio-unifesp.herokuapp.com/search.json?tipo=" + tipo + "&data=" + sdfJSON.format(new Date())));
+	public void atualizarDados(String tipo) {
+		
+		String requestURL = "http://cardapio-unifesp.herokuapp.com/search.json?tipo=" + tipo + "&data=" + sdfJSON.format(new Date());
+		
+		ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Carregando card‡pios...");
+        new AtualizacaoCardapioTask(this, progress, requestURL).execute();
+	}
+	
+	public void mostrarMensagemErro() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		
+		alert.setTitle("Erro ao atualizar card‡pios");
+		alert.setMessage("Verifique sua conex‹o com a internet.");
+		alert.setPositiveButton("Tentar novamente?", new DialogInterface.OnClickListener() {
 			
-			InputStream content = response.getEntity().getContent();
-			
-			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			Cardapio cardapio = gson.fromJson(new InputStreamReader(content), Cardapio.class);
-			
-			return cardapio;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
-        return null;
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+				atualizarDados(tipo);
+			}
+		});
+		
+		AlertDialog alertDialog = alert.create();
+		
+		alertDialog.show();
 	}
 
 	private void concatenarTexto(TextView textView, String texto) {
@@ -82,8 +85,6 @@ public class MostrarCardapioActivity extends Activity {
 
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
 }
