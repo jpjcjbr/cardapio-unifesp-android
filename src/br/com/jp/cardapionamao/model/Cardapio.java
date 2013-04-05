@@ -20,6 +20,6 @@ public class Cardapio {
 				return item.descricao;
 			}
 		}
-		return "";
+		return "Sem informa›es para hoje.";
 	}
 }
