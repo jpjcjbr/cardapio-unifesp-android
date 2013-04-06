@@ -2,26 +2,24 @@ package br.com.jp.cardapionamao;
 
 import android.app.TabActivity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Window;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-import com.google.ads.AdView;
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.Fullscreen;
+import com.googlecode.androidannotations.annotations.NoTitle;
 
+@NoTitle
+@Fullscreen
+@EActivity(R.layout.activity_main)
 public class MainActivity extends TabActivity {
 	
-	private AdView adView;
-	 
-	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
+	@AfterViews
+    void inicializarTela() {
 		TabHost tabHost = getTabHost();
 		
-		Intent intentAlmoco = new Intent().setClass(this, MostrarCardapioActivity.class);
+		Intent intentAlmoco = new Intent().setClass(this, MostrarCardapioActivity_.class);
 		intentAlmoco.putExtra("refeicao", "ALMOCO");
 		
 		TabSpec tabSpecAlmoco = tabHost
@@ -29,7 +27,7 @@ public class MainActivity extends TabActivity {
 		  .setIndicator("Almoço")
 		  .setContent(intentAlmoco);
 		
-		Intent intentJantar = new Intent().setClass(this, MostrarCardapioActivity.class);
+		Intent intentJantar = new Intent().setClass(this, MostrarCardapioActivity_.class);
 		intentJantar.putExtra("refeicao", "JANTAR");
  
 		TabSpec tabSpecJantar = tabHost
@@ -41,14 +39,5 @@ public class MainActivity extends TabActivity {
 		tabHost.addTab(tabSpecJantar);
  
 		tabHost.setCurrentTab(0);
-	}
-	
-	@Override
-	  public void onDestroy() {
-	    if (adView != null) {
-	      adView.destroy();
-	    }
-	    super.onDestroy();
-	  }
- 
+    }
 }
