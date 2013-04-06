@@ -39,13 +39,13 @@ public final class MostrarCardapioActivity_
     }
 
     private void afterSetContentView_() {
-        guarnicao = ((TextView) findViewById(id.guarnicao));
-        hoje = ((TextView) findViewById(id.hoje));
         saladas = ((TextView) findViewById(id.saladas));
-        sobremesa = ((TextView) findViewById(id.sobremesa));
-        pratoPrincipal = ((TextView) findViewById(id.pratoPrincipal));
         sucos = ((TextView) findViewById(id.sucos));
+        guarnicao = ((TextView) findViewById(id.guarnicao));
         quentes = ((TextView) findViewById(id.quentes));
+        hoje = ((TextView) findViewById(id.hoje));
+        pratoPrincipal = ((TextView) findViewById(id.pratoPrincipal));
+        sobremesa = ((TextView) findViewById(id.sobremesa));
         inicializarTela();
     }
 
@@ -97,14 +97,14 @@ public final class MostrarCardapioActivity_
     }
 
     @Override
-    public void mostrarMensagemErro() {
+    public void atualizarCampos(final Cardapio cardapio) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    MostrarCardapioActivity_.super.mostrarMensagemErro();
+                    MostrarCardapioActivity_.super.atualizarCampos(cardapio);
                 } catch (RuntimeException e) {
                     Log.e("MostrarCardapioActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -115,14 +115,14 @@ public final class MostrarCardapioActivity_
     }
 
     @Override
-    public void atualizarCampos(final Cardapio cardapio) {
+    public void mostrarMensagemErro() {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    MostrarCardapioActivity_.super.atualizarCampos(cardapio);
+                    MostrarCardapioActivity_.super.mostrarMensagemErro();
                 } catch (RuntimeException e) {
                     Log.e("MostrarCardapioActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
