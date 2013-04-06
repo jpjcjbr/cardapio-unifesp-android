@@ -40,11 +40,11 @@ public final class MostrarCardapioActivity_
 
     private void afterSetContentView_() {
         guarnicao = ((TextView) findViewById(id.guarnicao));
-        saladas = ((TextView) findViewById(id.saladas));
-        sucos = ((TextView) findViewById(id.sucos));
-        pratoPrincipal = ((TextView) findViewById(id.pratoPrincipal));
         hoje = ((TextView) findViewById(id.hoje));
+        saladas = ((TextView) findViewById(id.saladas));
         sobremesa = ((TextView) findViewById(id.sobremesa));
+        pratoPrincipal = ((TextView) findViewById(id.pratoPrincipal));
+        sucos = ((TextView) findViewById(id.sucos));
         quentes = ((TextView) findViewById(id.quentes));
         inicializarTela();
     }
